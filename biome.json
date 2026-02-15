@@ -29,11 +29,6 @@
       "semicolons": "asNeeded"
     }
   },
-  "json": {
-    "parser": {
-      "allowComments": true
-    }
-  },
   "assist": {
     "enabled": true,
     "actions": {
