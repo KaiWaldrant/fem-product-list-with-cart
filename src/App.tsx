@@ -7,11 +7,11 @@ function App() {
 
   return (
     <main>
-      <h1>Desserts</h1>
-      <div>
+      <section className="container">
+        <h1 className="heading">Desserts</h1>
         <List products={data} />
+      </section>
         <div className="cart"></div> {/* placeholder */}
-      </div>
     </main>
   )
 }

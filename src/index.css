@@ -27,3 +27,72 @@
   --clr-rose-900: hsl(14 65% 9%);
 
 }
+
+body {
+  background-color: var(--clr-rose-50);
+  
+  font-family: "RedHatText", sans-serif;
+  color: var(--clr-rose-900);
+  line-height: 1.5;
+  letter-spacing: 0px;
+
+}
+
+main {
+  display: grid;
+  gap: 2rem;
+
+  padding: 1.5rem;
+}
+
+.container {
+  display: grid;
+  gap: 2rem;
+}
+
+.heading {
+  font-size:2.5rem;
+  font-weight: 700;
+}
+
+.product-list {
+  --grid-max-col-count: 3;
+  --grid-min-col-size: 210px;
+  --grid-gap: 1.5rem;
+
+  /* calculations, do not touch! */
+  --grid-col-size-calc: calc((100% - (var(--grid-gap) * var(--grid-max-col-count))) / var(--grid-max-col-count));
+  --grid-col-min-size-calc: max(var(--grid-min-col-size), var(--grid-col-size-calc));
+
+  display: grid;
+  gap: var(--grid-gap);
+
+  grid-template-columns: repeat(auto-fit, minmax(var(--grid-col-min-size-calc), 1fr));
+}
+
+.item-card {
+  display: grid;
+  gap: 1rem;
+}
+
+.item-card__header {
+  & img {
+    min-height: 212px;
+    max-height: 240px;
+    border-radius: 8px;
+  }
+}
+
+.product-category {
+  font-size: 0.875rem;
+  color: var(--clr-rose-500);
+}
+
+.product-name{
+  font-weight: 600;
+}
+
+.product-price {
+  font-weight: 600;
+  color: var(--clr-red);
+}
