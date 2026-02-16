@@ -55,6 +55,26 @@ main {
   font-weight: 700;
 }
 
+.btn {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  padding-block: 0.75rem;
+  padding-inline: 1.75rem;
+  border-radius: 100vw;
+  border: 1px solid var(--clr-rose-400);
+  background-color: var(--clr-white);
+
+  font-size: 0.875rem;
+  font-weight: 600;
+
+  position: absolute;
+  bottom: -22px;
+
+  cursor: pointer;
+}
+
 .product-list {
   --grid-max-col-count: 3;
   --grid-min-col-size: 210px;
@@ -76,6 +96,10 @@ main {
 }
 
 .item-card__header {
+  display: grid;
+  justify-items: center;
+  position: relative;
+  margin-bottom: 22px;
   & img {
     min-height: 212px;
     max-height: 240px;
