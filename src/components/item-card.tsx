@@ -1,7 +1,8 @@
 import type { Product } from "../types/json";
+import type { CartType } from "../types/cart";
 import CartButton from "./cart-button";
 
-export default function ItemCard({ product }: { product: Product }) {
+export default function ItemCard( product : Product , cart: CartType) {
   return (
     <div className="item-card">
       <div className="item-card__header">
@@ -11,7 +12,7 @@ export default function ItemCard({ product }: { product: Product }) {
           <source srcSet={product.image.desktop} media="(min-width: 1440px)" />
           <img src={product.image.thumbnail} alt={product.name} />
         </picture>
-        <CartButton />
+        <CartButton cart={cart} productName={product.name} />
       </div>
       <div className="item-card__info">
         <p className="product-category">{product.category}</p>
