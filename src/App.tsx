@@ -1,6 +1,6 @@
 import data from "./data/data.json";
 import List from "./components/list";
-
+import Cart from "./components/cart";
 
 function App() {
 
@@ -11,7 +11,7 @@ function App() {
         <h1 className="heading">Desserts</h1>
         <List products={data} />
       </section>
-        <div className="cart"></div> {/* placeholder */}
+      <Cart />
     </main>
   )
 }

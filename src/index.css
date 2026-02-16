@@ -120,3 +120,36 @@ main {
   font-weight: 600;
   color: var(--clr-red);
 }
+
+/* Cart */
+
+.cart__container {
+  display: grid;
+  gap: 1.5rem;
+
+  padding: 1.5rem;
+
+  background-color: var(--clr-white);
+}
+
+.cart__heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--clr-red);
+}
+
+.cart__items {
+  display: grid;
+  gap: 1rem;
+  justify-content: center;
+  padding-block: 1rem;
+  
+  & svg {
+    justify-self: center;
+  }
+
+  & .placeholder {
+    font-size: 0.875rem;
+    color: var(--clr-rose-500);
+  }
+}
