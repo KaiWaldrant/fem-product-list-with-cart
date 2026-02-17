@@ -11,20 +11,21 @@ export interface ItemCardProps {
 export default function ItemCard({ product , cart, updateCartQuantity } : ItemCardProps) {
 
   const quantity = cart[product.name]?.quantity || 0;
+  const isInCart = quantity > 0;
 
   const handleIncrease = () => updateCartQuantity(product.name, 1)
   const handleDecrease = () => updateCartQuantity(product.name, -1)
 
   return (
     <div className="item-card">
-      <div className="item-card__header">
+      <div className={` item-card__header ${isInCart ? "item-card__header--in-cart" : ""}`}>
         <picture>
           <source srcSet={product.image.mobile} media="(max-width: 767px)" />
           <source srcSet={product.image.tablet} media="(max-width: 1439px)" />
           <source srcSet={product.image.desktop} media="(min-width: 1440px)" />
           <img src={product.image.thumbnail} alt={product.name} />
         </picture>
-        <CartButton isInCart={quantity > 0} quantity={quantity}  handleDecrease={handleDecrease} handleIncrease={handleIncrease} />
+        <CartButton isInCart={isInCart} quantity={quantity}  handleDecrease={handleDecrease} handleIncrease={handleIncrease} />
       </div>
       <div className="item-card__info">
         <p className="product-category">{product.category}</p>
