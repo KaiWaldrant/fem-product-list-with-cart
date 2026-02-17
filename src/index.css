@@ -180,6 +180,7 @@ main {
   gap: 1rem;
   justify-content: center;
   padding-block: 1rem;
+  min-height: 197px;
   
   & svg {
     justify-self: center;

@@ -35,7 +35,7 @@ const updateCartQuantity = (productName: string, change: number) => {
           ))}
         </div>
       </section>
-      <Cart />
+      <Cart products={data} cart={cart} updateCartQuantity={updateCartQuantity} />
     </main>
   )
 }
