@@ -1,8 +1,20 @@
 import type { Product } from "../types/json";
 import type { CartType } from "../types/cart";
-import CartButton from "./cart-button";
+import {CartButton} from "./cart-button";
 
-export default function ItemCard( product : Product , cart: CartType) {
+export interface ItemCardProps {
+  product: Product;
+  cart: CartType;
+  updateCartQuantity: (productName: string, change: number) => void;
+}
+
+export default function ItemCard({ product , cart, updateCartQuantity } : ItemCardProps) {
+
+  const quantity = cart[product.name]?.quantity || 0;
+
+  const handleIncrease = () => updateCartQuantity(product.name, 1)
+  const handleDecrease = () => updateCartQuantity(product.name, -1)
+
   return (
     <div className="item-card">
       <div className="item-card__header">
@@ -12,7 +24,7 @@ export default function ItemCard( product : Product , cart: CartType) {
           <source srcSet={product.image.desktop} media="(min-width: 1440px)" />
           <img src={product.image.thumbnail} alt={product.name} />
         </picture>
-        <CartButton cart={cart} productName={product.name} />
+        <CartButton isInCart={quantity > 0} quantity={quantity}  handleDecrease={handleDecrease} handleIncrease={handleIncrease} />
       </div>
       <div className="item-card__info">
         <p className="product-category">{product.category}</p>

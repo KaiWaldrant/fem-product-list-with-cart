@@ -1,5 +1,5 @@
 export type CartType = {
-  [key: string]: {
-    quantity: number;
-  };
-};
+	[key: string]: {
+		quantity: number
+	}
+}

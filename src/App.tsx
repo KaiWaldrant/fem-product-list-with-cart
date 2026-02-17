@@ -1,6 +1,6 @@
 import data from "./data/data.json";
-import List from "./components/list";
 import Cart from "./components/cart";
+import ItemCard from "./components/item-card";
 import type { CartType } from "./types/cart";
 import { useState } from "react";
 
@@ -29,7 +29,11 @@ const updateCartQuantity = (productName: string, change: number) => {
     <main>
       <section className="container">
         <h1 className="heading">Desserts</h1>
-        <List products={data} />
+        <div className="product-list">
+          {data.map((product) => (
+            <ItemCard key={product.name} product={product} cart={cart} updateCartQuantity={updateCartQuantity} />
+          ))}
+        </div>
       </section>
       <Cart />
     </main>
