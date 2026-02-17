@@ -1,43 +1,61 @@
-import data from "./data/data.json";
-import Cart from "./components/cart";
-import ItemCard from "./components/item-card";
-import type { CartType } from "./types/cart";
-import { useState } from "react";
+import { useState } from "react"
+import Cart from "./components/cart"
+import ItemCard from "./components/item-card"
+import data from "./data/data.json"
+import type { CartType } from "./types/cart"
+import type { Product } from "./types/json"
 
 function App() {
-const [cart, setCart] = useState<CartType>({});
+	const [cart, setCart] = useState<CartType>({})
 
-const updateCartQuantity = (productName: string, change: number) => {
+	const productLookup = data.reduce(
+		(acc, product) => {
+			acc[product.name] = product
+			return acc
+		},
+		{} as Record<string, Product>,
+	)
 
-  const currentQuantity = cart[productName]?.quantity || 0;
-  const newQuantity = currentQuantity + change;
+	const updateCartQuantity = (productName: string, change: number) => {
+		const currentQuantity = cart[productName]?.quantity || 0
+		const newQuantity = currentQuantity + change
 
-  if (newQuantity > 0) {
-    setCart((prevCart) => ({
-      ...prevCart,
-      [productName]: {quantity: newQuantity}
-    }));
-  } else if ( newQuantity === 0) {
-    setCart((prevCart) => {
-      const {[productName]: _, ...rest} = prevCart;
-      return rest
-    });
-  }
-};
+		if (newQuantity > 0) {
+			setCart((prevCart) => ({
+				...prevCart,
+				[productName]: { quantity: newQuantity },
+			}))
+		} else if (newQuantity === 0) {
+			setCart((prevCart) => {
+				// eslint-disable-next-line @typescript-eslint/no-unused-vars
+				const { [productName]: _, ...rest } = prevCart
+				return rest
+			})
+		}
+	}
 
-  return (
-    <main>
-      <section className="container">
-        <h1 className="heading">Desserts</h1>
-        <div className="product-list">
-          {data.map((product) => (
-            <ItemCard key={product.name} product={product} cart={cart} updateCartQuantity={updateCartQuantity} />
-          ))}
-        </div>
-      </section>
-      <Cart products={data} cart={cart} updateCartQuantity={updateCartQuantity} />
-    </main>
-  )
+	return (
+		<main>
+			<section className="container">
+				<h1 className="heading">Desserts</h1>
+				<div className="product-list">
+					{data.map((product) => (
+						<ItemCard
+							key={product.name}
+							product={product}
+							cart={cart}
+							updateCartQuantity={updateCartQuantity}
+						/>
+					))}
+				</div>
+			</section>
+			<Cart
+				productLookup={productLookup}
+				cart={cart}
+				updateCartQuantity={updateCartQuantity}
+			/>
+		</main>
+	)
 }
 
 export default App
