@@ -131,7 +131,8 @@ main {
 
 	border: transparent;
 
-	& a {
+	& button {
+		all: unset;
 		padding: 4px;
 		cursor: pointer;
 		border: 1px solid var(--clr-white);
