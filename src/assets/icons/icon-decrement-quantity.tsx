@@ -4,11 +4,11 @@ export default function IconDecrementQuantity() {
 			xmlns="http://www.w3.org/2000/svg"
 			width="10"
 			height="10"
-			fill="none"
+			fill="currentColor"
 			viewBox="0 0 10 2"
 		>
 			<title>Decrement quantity</title>
-			<path fill="#fff" d="M0 .375h10v1.25H0V.375Z" />
+			<path fill="currentColor" d="M0 .375h10v1.25H0V.375Z" />
 		</svg>
 	)
 }

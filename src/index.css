@@ -137,6 +137,17 @@ main {
 		cursor: pointer;
 		border: 1px solid var(--clr-white);
 		border-radius: 50%;
+
+		&:hover,
+		&:focus,
+		&:active {
+			background-color: var(--clr-white);
+			border-color: var(--clr-red);
+
+			& svg {
+				color: var(--clr-red);
+			}
+		}
 	}
 }
 
@@ -254,6 +265,12 @@ hr {
 	cursor: pointer;
 	background-color: var(--clr-red);
 	border-radius: 100vw;
+
+	&:hover,
+	&:focus,
+	&:active {
+		filter: brightness(0.75);
+	}
 }
 
 .cart__empty {
