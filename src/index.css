@@ -28,12 +28,11 @@
 }
 
 body {
-	background-color: var(--clr-rose-50);
-
 	font-family: "RedHatText", sans-serif;
-	color: var(--clr-rose-900);
 	line-height: 1.5;
+	color: var(--clr-rose-900);
 	letter-spacing: 0px;
+	background-color: var(--clr-rose-50);
 }
 
 main {
@@ -54,18 +53,17 @@ main {
 }
 
 .btn {
+	position: absolute;
+	bottom: -22px;
 	display: flex;
 	gap: 0.5rem;
 	align-items: center;
 
 	padding: 0.75rem;
-	border-radius: 100vw;
 
 	font-size: 0.875rem;
 	font-weight: 600;
-
-	position: absolute;
-	bottom: -22px;
+	border-radius: 100vw;
 }
 
 .product-list {
@@ -84,12 +82,12 @@ main {
 	);
 
 	display: grid;
-	gap: var(--grid-gap);
 
 	grid-template-columns: repeat(
 			auto-fit,
 			minmax(var(--grid-col-min-size-calc), 1fr)
 		);
+	gap: var(--grid-gap);
 }
 
 .item-card {
@@ -98,9 +96,9 @@ main {
 }
 
 .item-card__header {
+	position: relative;
 	display: grid;
 	justify-items: center;
-	position: relative;
 	margin-bottom: 22px;
 
 	& img {
@@ -117,27 +115,27 @@ main {
 .btn-add {
 	padding-inline: 1.75rem;
 
-	border: 1px solid var(--clr-rose-400);
+	cursor: pointer;
 	background-color: var(--clr-white);
 
-	cursor: pointer;
+	border: 1px solid var(--clr-rose-400);
 }
 
 .btn-update {
 	justify-content: space-between;
 
-	border: transparent;
-	background-color: var(--clr-red);
-
-	color: var(--clr-white);
-
 	width: 160px;
 
+	color: var(--clr-white);
+	background-color: var(--clr-red);
+
+	border: transparent;
+
 	& a {
-		border: 1px solid var(--clr-white);
-		border-radius: 50%;
 		padding: 4px;
 		cursor: pointer;
+		border: 1px solid var(--clr-white);
+		border-radius: 50%;
 	}
 }
 
@@ -162,9 +160,9 @@ main {
 	gap: 1.5rem;
 
 	padding: 1.5rem;
+	font-size: 0.875rem;
 
 	background-color: var(--clr-white);
-	font-size: 0.875rem;
 }
 
 .cart__heading {
@@ -211,10 +209,10 @@ main {
 
 .btn-remove {
 	all: unset;
+	padding: 4px;
 	cursor: pointer;
 	border: 1px solid var(--clr-rose-400);
 	border-radius: 50%;
-	padding: 4px;
 }
 
 hr {
@@ -236,6 +234,7 @@ hr {
 .cart-carbon {
 	display: flex;
 	gap: 0.5rem;
+	justify-content: center;
 	padding: 1rem;
 
 	background-color: var(--clr-rose-50);
@@ -247,27 +246,21 @@ hr {
 
 .btn-confirm {
 	all: unset;
-
 	padding: 1rem 1.5rem;
-
-	background-color: var(--clr-red);
-	color: var(--clr-white);
-
-	border-radius: 100vw;
-
-	text-align: center;
-
 	font-size: 1rem;
-
+	color: var(--clr-white);
+	text-align: center;
 	cursor: pointer;
+	background-color: var(--clr-red);
+	border-radius: 100vw;
 }
 
 .cart__empty {
 	display: grid;
 	gap: 1rem;
 	justify-content: center;
-	padding-block: 1rem;
 	min-height: 197px;
+	padding-block: 1rem;
 
 	& svg {
 		justify-self: center;
