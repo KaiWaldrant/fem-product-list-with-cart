@@ -1,5 +1,6 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import Cart from "./components/cart"
+import ConfirmedModal from "./components/confirmed-modal"
 import ItemCard from "./components/item-card"
 import data from "./data/data.json"
 import type { CartType } from "./types/cart"
@@ -34,6 +35,16 @@ function App() {
 		}
 	}
 
+	const confirmedModalRef = useRef<HTMLDialogElement>(null)
+
+	const openConfirmedModal = () => {
+		confirmedModalRef.current?.showModal()
+	}
+
+	const clearCart = () => {
+		setCart({})
+	}
+
 	return (
 		<main>
 			<section className="container">
@@ -53,6 +64,12 @@ function App() {
 				productLookup={productLookup}
 				cart={cart}
 				updateCartQuantity={updateCartQuantity}
+			/>
+			<ConfirmedModal
+				reference={confirmedModalRef}
+				productLookup={productLookup}
+				cart={cart}
+				clearCart={clearCart}
 			/>
 		</main>
 	)
