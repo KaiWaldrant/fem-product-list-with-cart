@@ -22,7 +22,12 @@ const ConfirmedModal = forwardRef<HTMLDialogElement, confirmedModalProps>(
 		)
 
 		return (
-			<dialog ref={ref} id="cart-confirmation" className="confirmed-container">
+			<dialog
+				ref={ref}
+				id="cart-confirmation"
+				className="confirmed-container"
+				aria-modal="true"
+			>
 				<div className="confirmed__header">
 					<IconOrderConfirmed />
 					<div className="confirmed-header__title">

@@ -31,6 +31,8 @@ export default function ItemCard({
 					<img src={product.image.thumbnail} alt={product.name} />
 				</picture>
 				<CartButton
+					key={product.name}
+					ariaLabel={product.name}
 					isInCart={isInCart}
 					quantity={quantity}
 					handleDecrease={handleDecrease}

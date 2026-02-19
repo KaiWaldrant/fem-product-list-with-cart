@@ -7,6 +7,7 @@ export interface CartButtonProps {
 	quantity: number
 	handleDecrease: () => void
 	handleIncrease: () => void
+	ariaLabel: string
 }
 
 export function CartButton({
@@ -14,21 +15,31 @@ export function CartButton({
 	quantity,
 	handleDecrease,
 	handleIncrease,
+	ariaLabel,
 }: CartButtonProps) {
 	return (
 		<>
 			{isInCart ? (
 				<div className="btn btn-update">
-					<button type="button" onClick={() => handleDecrease()}>
+					<button
+						aria-label={`decrease ${ariaLabel}`}
+						type="button"
+						onClick={() => handleDecrease()}
+					>
 						<IconDecrementQuantity />
 					</button>
 					<p>{quantity}</p>
-					<button type="button" onClick={() => handleIncrease()}>
+					<button
+						aria-label={`increase ${ariaLabel}`}
+						type="button"
+						onClick={() => handleIncrease()}
+					>
 						<IconIncrementQuantity />
 					</button>
 				</div>
 			) : (
 				<button
+					aria-label={ariaLabel}
 					type="button"
 					className="btn btn-add"
 					onClick={() => handleIncrease()}
