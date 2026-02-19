@@ -53,8 +53,13 @@ main {
 
 	padding: 1.5rem;
 
+	@media (min-width: 768px) {
+		padding: 2.5rem;
+	}
+
 	@media (min-width: 1440px) {
 		grid-template-columns: max-content 384px;
+		padding-block: 5.5rem;
 	}
 }
 
@@ -99,14 +104,13 @@ main {
 
 	display: grid;
 
-	grid-template-columns: repeat(
-			auto-fit,
-			minmax(var(--grid-col-min-size-calc), 1fr)
-		);
 	gap: var(--grid-gap);
 
-	@media (min-width: 1440px) {
-		grid-template-columns: repeat(var(--grid-max-col-count), max-content);
+	@media (min-width: 768px) {
+		grid-template-columns: repeat(
+				var(--grid-max-col-count),
+				minmax(var(--grid-col-min-size-calc), max-content)
+			);
 	}
 }
 
