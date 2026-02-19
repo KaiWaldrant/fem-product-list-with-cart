@@ -33,18 +33,22 @@ export default function Cart({
 			{Object.keys(cart).length > 0 ? (
 				<>
 					<div className="cart__items">
-						{Object.entries(cart).map(([productName, cartItem]) => (
-							<CartItem
-								key={productName}
-								name={productName}
-								price={productLookup[productName].price}
-								quantity={cartItem.quantity}
-								handleRemoveItem={() =>
-									updateCartQuantity(productName, -cartItem.quantity)
-								}
-							/>
+						{Object.entries(cart).map(([productName, cartItem], index) => (
+							<>
+								<CartItem
+									key={productName}
+									name={productName}
+									price={productLookup[productName].price}
+									quantity={cartItem.quantity}
+									handleRemoveItem={() =>
+										updateCartQuantity(productName, -cartItem.quantity)
+									}
+								/>
+								{index < Object.entries(cart).length - 1 && <hr />}
+							</>
 						))}
 					</div>
+					<hr />
 					<div className="cart-total">
 						<p className="cart-total__heading">Order Total</p>
 						<p className="cart-total__price">${totalPrice.toFixed(2)}</p>
