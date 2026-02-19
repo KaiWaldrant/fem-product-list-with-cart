@@ -48,7 +48,14 @@ main {
 	display: grid;
 	gap: 2rem;
 
+	align-items: start;
+	justify-content: center;
+
 	padding: 1.5rem;
+
+	@media (min-width: 1440px) {
+		grid-template-columns: max-content 384px;
+	}
 }
 
 .container {
@@ -97,11 +104,16 @@ main {
 			minmax(var(--grid-col-min-size-calc), 1fr)
 		);
 	gap: var(--grid-gap);
+
+	@media (min-width: 1440px) {
+		grid-template-columns: repeat(var(--grid-max-col-count), max-content);
+	}
 }
 
 .item-card {
 	display: grid;
 	gap: 1rem;
+	justify-content: start;
 }
 
 .item-card__header {
@@ -338,10 +350,18 @@ hr {
 		padding: 2.5rem;
 		border-radius: 12px;
 	}
+
+	@media (min-width: 1440px) {
+		min-width: 592px;
+	}
 }
 
 .confirmed-container[open] {
 	display: grid;
+}
+
+.confirmed-container::backdrop {
+	background-color: hsl(0 0% 0% / 0.5);
 }
 
 .confirmed-header {
