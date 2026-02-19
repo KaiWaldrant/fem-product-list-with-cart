@@ -22,28 +22,35 @@ const ConfirmedModal = forwardRef<HTMLDialogElement, confirmedModalProps>(
 		)
 
 		return (
-			<dialog ref={ref} id="cart-confirmation" open>
-				<div className="confirmation__header">
+			<dialog ref={ref} id="cart-confirmation" className="confirmed-container">
+				<div className="confirmed__header">
 					<IconOrderConfirmed />
-					<h3>Order Confirmed</h3>
-					<p>We hope you enjoy your food!</p>
+					<div className="confirmed-header__title">
+						<h3 className="confirmed-header__heading">Order Confirmed</h3>
+						<p className="confirmed-header_subheading">
+							We hope you enjoy your food!
+						</p>
+					</div>
 				</div>
-				<div className="confirmed__body">
-					<div className="confirmed__items">
-						{Object.entries(cart).map(([productName, confirmedItem]) => (
-							<ConfirmedItem
-								key={productName}
-								name={productName}
-								thumbnail={productLookup[productName].image.thumbnail}
-								price={productLookup[productName].price}
-								quantity={confirmedItem.quantity}
-							/>
+				<div className="confirmed-content">
+					<div className="confirmed-items">
+						{Object.entries(cart).map(([productName, confirmedItem], index) => (
+							<>
+								<ConfirmedItem
+									key={productName}
+									name={productName}
+									thumbnail={productLookup[productName].image.thumbnail}
+									price={productLookup[productName].price}
+									quantity={confirmedItem.quantity}
+								/>
+								{index < Object.entries(cart).length - 1 && <hr />}
+							</>
 						))}
 					</div>
 					<hr />
-					<div className="confirmed__total">
-						<p className="confirmed__total__heading">Order Total</p>
-						<p className="confirmed__total__price">${totalPrice.toFixed(2)}</p>
+					<div className="confirmed-total">
+						<p className="confirmed-total__heading">Order Total</p>
+						<p className="confirmed-total__price">${totalPrice.toFixed(2)}</p>
 					</div>
 				</div>
 				<button
