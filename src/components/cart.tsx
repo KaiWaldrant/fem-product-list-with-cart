@@ -8,12 +8,14 @@ interface CartProps {
 	productLookup: Record<string, Product>
 	cart: CartType
 	updateCartQuantity: (productName: string, change: number) => void
+	openConfirmedModal: () => void
 }
 
 export default function Cart({
 	productLookup,
 	cart,
 	updateCartQuantity,
+	openConfirmedModal,
 }: CartProps) {
 	const totalQuantity = Object.values(cart).reduce(
 		(acc, cartItem) => acc + cartItem.quantity,
@@ -53,7 +55,11 @@ export default function Cart({
 							This is a <span>carbon-neutral</span> deliviery
 						</p>
 					</div>
-					<button className="btn-confirm" type="button">
+					<button
+						className="btn-confirm"
+						type="button"
+						onClick={() => openConfirmedModal()}
+					>
 						Confirm Order
 					</button>
 				</>

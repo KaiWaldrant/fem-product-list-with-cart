@@ -40,9 +40,13 @@ function App() {
 	const openConfirmedModal = () => {
 		confirmedModalRef.current?.showModal()
 	}
+	const closeConfirmedModal = () => {
+		confirmedModalRef.current?.close()
+	}
 
 	const clearCart = () => {
 		setCart({})
+		closeConfirmedModal()
 	}
 
 	return (
@@ -64,9 +68,10 @@ function App() {
 				productLookup={productLookup}
 				cart={cart}
 				updateCartQuantity={updateCartQuantity}
+				openConfirmedModal={openConfirmedModal}
 			/>
 			<ConfirmedModal
-				reference={confirmedModalRef}
+				ref={confirmedModalRef}
 				productLookup={productLookup}
 				cart={cart}
 				clearCart={clearCart}
