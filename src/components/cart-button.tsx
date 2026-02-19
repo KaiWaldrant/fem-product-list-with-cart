@@ -18,7 +18,7 @@ export function CartButton({
 	return (
 		<>
 			{isInCart ? (
-				<button type="button" className="btn btn-update">
+				<div className="btn btn-update">
 					<button type="button" onClick={() => handleDecrease()}>
 						<IconDecrementQuantity />
 					</button>
@@ -26,7 +26,7 @@ export function CartButton({
 					<button type="button" onClick={() => handleIncrease()}>
 						<IconIncrementQuantity />
 					</button>
-				</button>
+				</div>
 			) : (
 				<button
 					type="button"

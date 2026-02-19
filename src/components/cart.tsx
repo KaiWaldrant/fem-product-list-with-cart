@@ -1,3 +1,4 @@
+import { Fragment } from "react"
 import IconCarbonNeutral from "../assets/icons/icon-carbon-neutral"
 import IllustrationEmptyCart from "../assets/icons/illustration-empty-cart"
 import type { CartType } from "../types/cart"
@@ -34,7 +35,7 @@ export default function Cart({
 				<>
 					<div className="cart__items">
 						{Object.entries(cart).map(([productName, cartItem], index) => (
-							<>
+							<Fragment key={productName}>
 								<CartItem
 									key={productName}
 									name={productName}
@@ -45,7 +46,7 @@ export default function Cart({
 									}
 								/>
 								{index < Object.entries(cart).length - 1 && <hr />}
-							</>
+							</Fragment>
 						))}
 					</div>
 					<hr />

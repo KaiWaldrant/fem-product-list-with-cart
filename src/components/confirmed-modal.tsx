@@ -1,4 +1,4 @@
-import { forwardRef } from "react"
+import { Fragment, forwardRef } from "react"
 import IconOrderConfirmed from "../assets/icons/icon-order-confirmed"
 import type { CartType } from "../types/cart"
 import type { Product } from "../types/json"
@@ -35,16 +35,18 @@ const ConfirmedModal = forwardRef<HTMLDialogElement, confirmedModalProps>(
 				<div className="confirmed-content">
 					<div className="confirmed-items">
 						{Object.entries(cart).map(([productName, confirmedItem], index) => (
-							<>
+							<Fragment
+								key={`${productName}-${confirmedItem.quantity}-confirmed`}
+							>
 								<ConfirmedItem
-									key={productName}
+									key={`${productName}-confirmed`}
 									name={productName}
 									thumbnail={productLookup[productName].image.thumbnail}
 									price={productLookup[productName].price}
 									quantity={confirmedItem.quantity}
 								/>
 								{index < Object.entries(cart).length - 1 && <hr />}
-							</>
+							</Fragment>
 						))}
 					</div>
 					<hr />

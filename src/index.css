@@ -334,9 +334,9 @@ hr {
 	}
 
 	@media (min-width: 768px) {
-		border-radius: 12px;
-		padding: 2.5rem;
 		min-width: 688px;
+		padding: 2.5rem;
+		border-radius: 12px;
 	}
 }
 
